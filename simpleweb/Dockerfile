@@ -4,7 +4,11 @@ FROM node:alpine
 WORKDIR /usr/app
 
 # Install some depenendencies
-COPY ./package.json ./
+# add package.json because package.json our 
+# container not add package.json inside the container
+# and without package.json application not work
+
+COPY ./package.json ./    
 RUN npm install
 COPY ./ ./
 
